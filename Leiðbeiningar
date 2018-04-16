@@ -1,0 +1,49 @@
+#Leiðbeiningar
+Hrútaspilið, kröfur um úrlausn:
+
+Upplýsingar um hvern hrút (nafn og 8 flokka) skal vera í textaskjali sem forritið getur lesið úr þegar spilið hefst.
+Forritið skiptir stokknum handahófskennt jafnt á milli leikmanna. 
+Lágmarkskrafa er að tveir geti keppt (notandi og tölva).
+Í hverri umferð er spilað efsta spili í stokk leikmanna.
+Þegar tölvan á leik velur forritið handahófskennt flokk sem keppa skal í.
+Þegar notandi á leik skal hann geta valið flokk til að keppa í.
+Sá sem er með hæstu tölu flokks sem keppt er í fær spilin neðst í sinn stokk.
+Ef tölur flokks sem keppt er í er jafnar eru öll spil þeirrar umferðar geymd og næsta umferð hefst þar til vinningur næst, þá fara þau með neðst í stokk vinningshafa.
+
+Aukakröfur:
+Margir geta spilað (í sömu tölvu).
+Spilum er þá skipt jafnt á leikmenn, þau spil sem ganga eru ekki með í það skipti.
+
+Reglur um hrútaspilið
+Hrútaspilið – Tekið af BoardGameGeek.
+https://boardgamegeek.com/boardgameversion/34751/hrutabraedur-second-edition
+
+Upplýsingar
+Hrútaspilið byggist á því að keppa um eiginleika íslenska hrútsins. 
+Á hverju spili er mynd af hrút, nafn hans og ýmsar upplýsingar sem varða útlit, líkamsburði 
+og aðra eiginleika hans. Hverjum þykir sinn fugl fagur og það á líka við um hrúta, en þeir geta verið hyrndir, 
+kollóttir, stuttfættir, langir, gulir, kubbslaga, með útstæð horn og svona mætti lengi telja. 
+Einnig er hægt að spila venjuleg spil með Hrútaspilunum og því er Hrútaspilið tilvalin tækifærisgjöf.
+Leikreglur
+Markmið spilsins er að ná öllum hrútunum af andstæðingnum.
+Hrútaspilin eru stokkuð og síðan deilt jafnt á þátttakendur. 
+Hver heldur á sínum spilum þannig að hann sér aðeins efsta hrútinn sinn og enginn sér hrút annarra. 
+Sá sem er á vinstri hönd gjafara byrjar spilið á því að rýna í og reyna að átta sig á því hverjir séu bestu eiginleikar 
+hrútsins á spilinu hans, t.d. ull, og segir hinum. Sá sem hefur þann hrút sem hefur hæstu einkunn fyrir ullina vinnur 
+og fær efstu spil allra leikmanna. Ef tveir eða fleiri eru með sömu tölu eru hrútarnir lagðir á borðið og næstu teknir 
+eins fyrir nema nú keppa aðeins þeir sem höfðu efstu tölurnar. Þessu er haldið áfram þar til einn vinnur og fær hann þá
+alla hrútana í pottinum. Eiginleikar hrútana eru útskýrðir með myndum.
+Info
+Hrútaspilið is a fun card game where you use the qualities of Icelandic rams to compete.
+On each card there is a picture of a breeding ram, his name along with information about his breeding qualities.
+Rules
+Shuffle the deck and deal the cards equally amongst the players. 
+The players hold their cards to themselves, but only looking at their top card. The one sitting on the left of 
+the dealer starts speculating which of his rams qualities are his best. The player reveals this category and the score to the others. 
+The player with the highest number in that category wins the cards of all the other players which he places on the bottom of his deck. 
+If however more than one player has the same highest score, all the rams are put on the table and the highest scorers play again using
+the same category. This carries on until one player gets the highest number and in turn gets all the cards on the table. 
+The caller is allways the one who has won the last hand. The winner of the game is the one who manages to collect all the cards. 
+The diferent qualities of the rams are explaned with icons.
+
+
