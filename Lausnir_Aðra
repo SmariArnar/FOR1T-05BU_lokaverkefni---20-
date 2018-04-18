@@ -1,5 +1,4 @@
-#Ísar Daði Pálsson og Bergur Ingi Ólafsson
-#07.05.2017
+
 #Lokaverkefni í Forritun
 from random import *
 from time import *
