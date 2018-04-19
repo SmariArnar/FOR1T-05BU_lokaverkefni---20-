@@ -26,13 +26,16 @@ with open("hrutaspil.txt","r", encoding="utf-8") as f:
 shuffle(hrutalisti)
 #Hér skipti ég listanum í tvo lista, eða tvær hendur
 #til að nota þær og þær eru ruglaðar
+#Ég nota engan smið fyrir valuein á dictinu þetta er einfaldara í notkun en heill klasi.
 tolva.append(hrutalisti[:26])
 notandi.append(hrutalisti[26:])
 #Hér bý ég til while lykkju sem mun keyra þangað til að annaðhvort hefur
 #tapað öllum spilunum sínum, endurtekur alltaf leikröðina þangað til leikurinn klárast.
 while len(tolva) or len(notandi) > 0:
-    # Það eru tvær gerðir af skipunum sem við viljum gera í þessu spili
-    # Fá hann til að velja hvað hann vill keppa í og svo hve úrslitin voru sem overlappast sitt á hvað
+    #hér nota ég teljara sem fer sitt á hvað að velja flokk á notanda í tölvu,
+    #það sem kemur út úr þessum tveimur if setningum heitir bæði val,
+    #því flokkurinn sem er valinn fara bæði í sama proccess er þau eru valinn
+    #það er að ákvarða hvaða hrútur vinnur, svo heldur þetta áfram og áfram í while lykkjunni þar til annar er búinn að tapaþ
     teljari += 1
     if teljari%2 == 0:
         ordabok = notandi[0]
@@ -40,29 +43,55 @@ while len(tolva) or len(notandi) > 0:
         #Svo prenta ég út einkenni hrútsins svo hann velur hvað hann heldur mun vinna
         print("Veldu í hverju þú vilt keppa!")
         print("Þú ert með hrútinn ", ordabok[0].keys())
-        print("Þyngd hrútsins þíns er ",list(ordabok[0].values())[0][0])
-        print("Mjólkur tala hrútsins þíns  ",list(ordabok[0].values())[0][1])
-        print("Ulliar talan á hrútnum er ",list(ordabok[0].values())[0][2])
-        print("Fjöldi afkvæmi hrútsins ",list(ordabok[0].values())[0][3])
-        print("Læri hrútsins er með töluna ",list(ordabok[0].values())[0][4])
-        print("Frjósemis tala hrútsins er ",list(ordabok[0].values())[0][5])
-        print("Bakvöðva tala hrútsins er ",list(ordabok[0].values())[0][6])
-        print("Stig malar hrútsins ",list(ordabok[0].values())[0][7])
-        inntak = int(input("Sláðu inn í hverju þú vilt láta hrútinn þinn keppa"))
+        print("0.Þyngd hrútsins þíns er ",list(ordabok[0].values())[0][0])
+        print("1.Mjólkur tala hrútsins þíns  ",list(ordabok[0].values())[0][1])
+        print("2.Ulliar talan á hrútnum er ",list(ordabok[0].values())[0][2])
+        print("3.Fjöldi afkvæmi hrútsins ",list(ordabok[0].values())[0][3])
+        print("4.Læri hrútsins er með töluna ",list(ordabok[0].values())[0][4])
+        print("5.Frjósemis tala hrútsins er ",list(ordabok[0].values())[0][5])
+        print("6.Bakvöðva tala hrútsins er ",list(ordabok[0].values())[0][6])
+        print("7.Stig malar hrútsins ",list(ordabok[0].values())[0][7])
+        val = int(input("Sláðu inn í hverju þú vilt láta hrútinn þinn keppa"))
     if teljari%2 == 1:
-        #Nú er ég kominn með það sem notandin vill keppa í
-        #Nú þarf ég að finna hvað tölvan ætlar að spila um.
+        #nú í annari loopu fær tölvan að velja(random), hvað hún vill keppa í.
         ordabok2 = tolva[0]
         print("Tölvan er með hrútinn", ordabok2[0].keys())
         print("-----------------------------------------")
         print("Bíddu rólegur, tölvan er núna að velja sér eiginleika.")
         time.sleep(2)
-        #Hér geri ég bara random á það hvað talvan velur sér, bý svo til elif sagnir úr 
+        #Hér geri ég bara random á það hvað talvan velur sér, bý svo til elif sagnir úr
         #því hvaða random tala var valinn.
-        valTölvu = randint(1,8)
-    if valTölvu == 0:
+        val = randint(0,7)
+    if val != 0 and val <= 8 :
+        ordabok2 = tolva[0]
         print("")
-        
+        if list(ordabok[0].values())[0][val] > list(ordabok2[0].values())[0][val]:
+            #hér er lína sem skilgreinir hvort value er hærra og það skilgreinir hver vinnur0
+            print("Notandi hefur unnið")
+            ordabok.append(ordabok.pop(0))
+            ordabok.append(tolva.pop(0))
+        elif list(ordabok[0].values())[0][val] < list(ordabok2[0].values())[0][val]:
+            print("Tölva hefur unnið")
+            ordabok2.append(ordabok.pop(0))
+            ordabok2.append(ordabok2.pop(0))
+        elif list(ordabok[0].values())[0][val] == list(ordabok2[0].values())[0][val]:
+            print("Úpsídeisí, jafntefli, spilið aftur.")
+    else:
+        print("úps, villa. Veldu á milli 0 og 7 ekki hærra eða lægra.")
+    print("Spilastokkur þinn er með",len(notandi[0]),"spil.")
+    print("Spilastokkur tölvunnar er með",len(tolva[0]),"spil")
+
+    if len(ordabok[0]) == 0:
+        print("Þú hefur tapað öllum þínum spilum og þarafleiðandi tapað spilinu.")
+        print("Tölvan er með",len(ordabok2[0]),"spil.")
+        break
+    elif len(ordabok2[0]) == 0:
+        print("Tölvan hefur tapað öllum sínum spilum og þú hefur unnið hana")
+        print("Þú endar með",len(ordabok[0]),"spil.")
+        break
+
+
+
 
 
 
