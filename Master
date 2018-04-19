@@ -9,6 +9,7 @@ teljari = 1
 #Hér bý ég til lista með hrútapsilunum sem ég appenda í, frá texta möppunum.
 hrutalisti = []
 #Hér er listi sem inniheldur spil bæði frá,
+
 tolva = []
 notandi = []
 #Áður en ég byrja á að gera þetta bý ég til texta möppu sem inniheldur
@@ -28,8 +29,6 @@ shuffle(hrutalisti)
 #Ég nota engan smið fyrir valuein á dictinu þetta er einfaldara í notkun en heill klasi.
 tolva.append(hrutalisti[:26])
 notandi.append(hrutalisti[26:])
-print(tolva)
-print(notandi)
 #Hér bý ég til while lykkju sem mun keyra þangað til að annaðhvort hefur
 #tapað öllum spilunum sínum, endurtekur alltaf leikröðina þangað til leikurinn klárast.
 while len(tolva) or len(notandi) > 0:
@@ -39,38 +38,166 @@ while len(tolva) or len(notandi) > 0:
     #það er að ákvarða hvaða hrútur vinnur, svo heldur þetta áfram og áfram í while lykkjunni þar til annar er búinn að tapaþ
     teljari += 1
     if teljari%2 == 0:
-        ordabok = notandi[0]
-        #Hér bý ég til nýjan lista sem ordabok, til að hafa listana hagnýtari og nothæfa.
-        #Svo prenta ég út einkenni hrútsins svo hann velur hvað hann heldur mun vinna
-        print("Veldu í hverju þú vilt keppa!")
-        print("Þú ert með hrútinn ", ordabok[0].keys())
-        print("0.Þyngd hrútsins þíns er ",list(ordabok[0].values())[0][0])
-        print("1.Mjólkur tala hrútsins þíns  ",list(ordabok[0].values())[0][1])
-        print("2.Ulliar talan á hrútnum er ",list(ordabok[0].values())[0][2])
-        print("3.Fjöldi afkvæmi hrútsins ",list(ordabok[0].values())[0][3])
-        print("4.Læri hrútsins er með töluna ",list(ordabok[0].values())[0][4])
-        print("5.Frjósemis tala hrútsins er ",list(ordabok[0].values())[0][5])
-        print("6.Bakvöðva tala hrútsins er ",list(ordabok[0].values())[0][6])
-        print("7.Stig malar hrútsins ",list(ordabok[0].values())[0][7])
-        val = int(input("Sláðu inn í hverju þú vilt láta hrútinn þinn keppa"))
-    if teljari%2 == 1:
-        #nú í annari loopu fær tölvan að velja(random), hvað hún vill keppa í.
-        print(ordabok2)
+        #Ég set hér í tvo orðabókarlista, gildin sem komu úr txt skránni
+        #Þetta er gert svo hægt sé að nota þær í hverju loopi, þ.e.a.s þær eru ekki faststaðlaðar
+        ordabok1 = notandi[0]
         ordabok2 = tolva[0]
+        print('\x1b[1;31m' + 'Nú átt þú leik!' + '\x1b[0m')
+        print('\x1b[1;31m' + 'Veldu í hverju þú vilt keppa' + '\x1b[0m')
+        for key, value in ordabok1[0].items():
+            print("Þú ert með hrútinn",key)
+            print("Eiginleikar hans eru: ",value)
+        time.sleep(0.5)
+        #Valmynd um hvaða eiginleika notandinn vill nota, í umferðinni!
+        print("0.Þyngdarstig ",list(ordabok1[0].values())[0][0])
+        time.sleep(0.5)
+        print("1.Mjólkurstig  ",list(ordabok1[0].values())[0][1])
+        time.sleep(0.5)
+        print("2.Ullarstig",list(ordabok1[0].values())[0][2])
+        time.sleep(0.5)
+        print("3.Afkvæmisstig",list(ordabok1[0].values())[0][3])
+        time.sleep(0.5)
+        print("4.Lærisstig ",list(ordabok1[0].values())[0][4])
+        time.sleep(0.5)
+        print("5.Frjósemisstig",list(ordabok1[0].values())[0][5])
+        time.sleep(0.5)
+        print("6.Bakvöðvastig",list(ordabok1[0].values())[0][6])
+        time.sleep(0.5)
+        print("7.Malarstig",list(ordabok1[0].values())[0][7])
+        time.sleep(0.5)
+        val = int(input("Sláðu inn hvað þú vilt láta hrútinn þinn keppa í: "))
+        #Hér fyrir neðan er kóði sem sýnir hvað valinn eiginleiki er hár miðað við eiginleika spil hins sem hann er að keppa við!
+        if val == 0:
+            print("Þú valdir þér þyngdina: ", list(ordabok1[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Þyngd hrúts tölvunnar er", list(ordabok2[0].values())[0][val])
+            time.sleep(1)
+        elif val == 1:
+            print("Þú valdir þér mjólkurstigið: ", list(ordabok1[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Mjólkurstig hrúts tölvunnar er", list(ordabok2[0].values())[0][val])
+            time.sleep(1)
+        elif val == 2:
+            print("Þú valdir þér ullarstigið: ", list(ordabok1[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Ullarstig hrúts tölvunnar er: ", list(ordabok2[0].values())[0][val])
+            time.sleep(1)
+        elif val == 3:
+            print("Þú valdir þér afkvæmastigin: ", list(ordabok1[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Afkvæmastig hrúts tölvunnar er:", list(ordabok2[0].values())[0][val])
+            time.sleep(1)
+        elif val == 4:
+            print("Þú valdir þér lærisstigið: ", list(ordabok1[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Læristig hrúts tölvunnar er", list(ordabok2[0].values())[0][val])
+            time.sleep(1)
+        elif val == 5:
+            print("Þú valdir þér frjóssemistigið: ", list(ordabok1[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Frjósemisstig hrúts tölvunnar er: ", list(ordabok2[0].values())[0][val])
+            time.sleep(1)
+        elif val == 6:
+            print("Þú valdir þér bakvöðvastigið: ", list(ordabok1[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Bakvöðvastig hrúts tölvunnar er: ", list(ordabok2[0].values())[0][val])
+            time.sleep(1)
+        elif val == 7:
+            print("Þú valdir þér malarstigið : ", list(ordabok1[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Malarstig hrúts tölvunnar er: ", list(ordabok2[0].values())[0][val])
+            time.sleep(1)
+    if teljari%2 == 1:
+        time.sleep(2)
+        print('\x1b[1;31m' + 'Nú á tölvan leik.' + '\x1b[0m')
+        ordabok2 = tolva[0]
+        #nú í annari loopu fær tölvan að velja(random), hvað hún vill keppa í.
         print("Tölvan er með hrútinn", ordabok2[0].keys())
+        print("Þyngdarstig ", list(ordabok2[0].values())[0][0])
+        time.sleep(0.5)
+        print("Mjólkurstig  ", list(ordabok2[0].values())[0][1])
+        time.sleep(0.5)
+        print("Ullarstig", list(ordabok2[0].values())[0][2])
+        time.sleep(0.5)
+        print("Afkvæmisstig", list(ordabok2[0].values())[0][3])
+        time.sleep(0.5)
+        print("Lærisstig ", list(ordabok2[0].values())[0][4])
+        time.sleep(0.5)
+        print("Frjósemisstig", list(ordabok2[0].values())[0][5])
+        time.sleep(0.5)
+        print("Bakvöðvastig", list(ordabok2[0].values())[0][6])
+        time.sleep(0.5)
+        print("Malarstig", list(ordabok2[0].values())[0][7])
         time.sleep(0.5)
         print("-----------------------------------------")
-        print("Bíddu rólegur, tölvan er núna að velja sér eiginleika.")
+        print("Bíddu rólegur, nú er tölvan að ákveða hvað hún ætlar að keppa í.")
         time.sleep(2)
         #Hér geri ég bara random á það hvað talvan velur sér, bý svo til elif sagnir úr
         #því hvaða random tala var valinn.
-        val = randint(1,6)
+        val = randint(0,7)
+        #Hér fyrir neðan er kóði sem sýnir hvað valinn eiginleiki er hár miðað við eiginleika spil hins sem hann er að keppa við!
+        if val == 0:
+            print("Tölvan valdi sér þyngdina: ", list(ordabok2[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Þyngdin þín er", list(ordabok1[0].values())[0][val])
+            time.sleep(1)
+        elif val == 1:
+            print("Tölvan valdi sér mjólkina: ", list(ordabok2[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Mjólkurstigið þitt")
+            time.sleep(1)
+            print("Mjólkurstigið þitt er", list(ordabok1[0].values())[0][val])
+            time.sleep(1)
+        elif val == 2:
+            print("Tölvan valdi sér ullarstigið: ", list(ordabok2[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Á móti ullarstiginu þínu")
+            time.sleep(1)
+            print("Ullarstigið þitt er: ", list(ordabok1[0].values())[0][val])
+            time.sleep(1)
+        elif val == 3:
+            print("Tölvan valdi sér afkvæmastigin: ", list(ordabok2[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Á móti afkvæmum hrútsins þíns.")
+            time.sleep(1)
+            print("Afkvæmastig þitt er:", list(ordabok1[0].values())[0][val])
+            time.sleep(1)
+        elif val == 4:
+            print("Tölvan valdi sér lærisstigið: ", list(ordabok2[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Á móti lærisstiginu þínu.")
+            time.sleep(1)
+            print("Læristigið þitt er", list(ordabok1[0].values())[0][val])
+            time.sleep(1)
+        elif val == 5:
+            print("Tölvan valdi sér frjóssemistigið: ", list(ordabok2[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Á móti frjósemisstiginu þínu.")
+            time.sleep(1)
+            print("Frjósemisstigið þitt er: ", list(ordabok1[0].values())[0][val])
+            time.sleep(1)
+        elif val == 6:
+            print("Tölvan valdi sér bakvöðvastigið: ", list(ordabok2[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Á móti bakvöðvastiginu þínu.")
+            time.sleep(1)
+            print("Bakvörðustigið þitt er: ", list(ordabok1[0].values())[0][val])
+            time.sleep(1)
+        elif val == 7:
+            print("Tölvan valdi sér malarstigið : ", list(ordabok2[0].values())[0][val],"til að keppa í")
+            time.sleep(1)
+            print("Á móti malastiginu þínu.")
+            time.sleep(0.5)
+            print("Malarstigið þitt er: ", list(ordabok1[0].values())[0][val])
+            time.sleep(1)
+    #Ef val er það sama og staðsetning gildis í lista, þá ákveður þessi kóði hver vann umferðina!
     if val != 0 and val <= 8:
-        ordabok = notandi[0]
+        time.sleep(2)
         ordabok2 = tolva[0]
+        ordabok1 = notandi[0]
         print("")
-        if list(ordabok[0].values())[0][val] > list(ordabok2[0].values())[0][val]:
-            #hér er lína sem skilgreinir hvort value er hærra og það skilgreinir hver vinnur0
+        #Ef eiginleikin sem þú valdir er stærri en eiginleikinn hjá spili tölvunnar vinnur þú og tekur spil tölvunnar!
+        if list(ordabok1[0].values())[0][val] > list(ordabok2[0].values())[0][val]:
             print('\x1b[1;31m' + 'Þú vinnur þessa umferð!' + '\x1b[0m')
             print("  _     __       _                   _ ")
             time.sleep(0.05)
@@ -80,10 +207,13 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(0.05)
             print(" |_|  \_,_|  \_/|_|_||_|_||_\_,_|_| (_)\n")
             time.sleep(2)
-            ordabok.append(ordabok.pop(0))
-            ordabok.append(tolva.pop(0))
-        elif list(ordabok[0].values())[0][val] < list(ordabok2[0].values())[0][val]:
-            print("Tölvan vann þessa umferð")
+            ordabok1.append(ordabok1.pop(0))
+            ordabok1.append(ordabok2.pop(0))
+        #Ef tölvan valdi eiginleika hrútsins sem er stærri en eiginleikinn sem notandi er með tekur tölvan spilið!
+        elif list(ordabok1[0].values())[0][val] < list(ordabok2[0].values())[0][val]:
+            ordabok1 = notandi[0]
+            ordabok2 = tolva[0]
+            print('\x1b[1;31m' + 'Tölvan vann þessa umferð!' + '\x1b[0m')
             print("  _____ _   _ _                     _                   _ ")
             time.sleep(0.05)
             print(" |_   _(_)_(_) |_ ____ _ _ _   __ _(_)_ _  _ _ _  _ _ _| |")
@@ -92,22 +222,28 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(0.05)
             print("   |_|  \___/|_|\_/\__,_|_||_|  \_/|_|_||_|_||_\_,_|_| (_)\n")
             time.sleep(2)
-            ordabok2.append(ordabok.pop(0))
-            ordabok2.append(tolva.pop(0))
-        elif list(ordabok[0].values())[0][val] == list(ordabok2[0].values())[0][val]:
-            print("Úpsídeisí, jafntefli, spilið aftur.")
+            ordabok2.append(ordabok2.pop(0))
+            ordabok2.append(ordabok1.pop(0))
+        #Ef það kemur upp jafntefli er bara valinn einhver annara eiginleiki á hrútnm.
+        elif list(ordabok1[0].values())[0][val] == list(ordabok2[0].values())[0][val]:
+            print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+        #Hér geta notendur séð hvernig staðan er á stokkunum í hverri loopu!
+        print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
+        time.sleep(1)
+        print("Eftir þessa umferð ert þú með:", len(notandi[0]), "spil.")
+        time.sleep(1)
+        print("Eftir þessa umferð er talvan með: ", len(tolva[0]), "spil")
+        time.sleep(1)
     else:
         print("úps, villa. Veldu á milli 0 og 7 ekki hærra eða lægra.")
-        print("Spilastokkur þinn er með",len(notandi[0]),"spil.")
-        print("Spilastokkur tölvunnar er með",len(tolva[0]),"spil")
-
-    if len(ordabok[0]) == 0:
+    #Ef annarhvort stokkurinn er tómur er hinn búinn að vinna og þessi kóði prentar hver vann spilið!
+    if len(ordabok1[0]) == 0:
         print("Þú hefur tapað öllum þínum spilum og þarafleiðandi tapað spilinu.")
         print("Tölvan er með",len(ordabok2[0]),"spil.")
 
     elif len(ordabok2[0]) == 0:
         print("Tölvan hefur tapað öllum sínum spilum og þú hefur unnið hana")
-        print("Þú endar með",len(ordabok[0]),"spil.")
+        print("Þú endar með",len(ordabok1[0]),"spil.")
 
 
 
