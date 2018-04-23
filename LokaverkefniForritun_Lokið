@@ -4,14 +4,27 @@
 import time
 from random import *
 from random import shuffle
-
+class Hrutur:
+    def __init__(self,nafn,thyngd,mjolk,ull,afkvaemi,laeri,frjosemi,bak,malars):
+        self.nafn = nafn
+        self.thyngd = thyngd
+        self.mjolk = mjolk
+        self.ull = ull
+        self.afkvaemi = afkvaemi
+        self.laeri = laeri
+        self.frjosemi = frjosemi
+        self.bak = bak
+        self.malars = malars
+hrutur = Hrutur
 teljari = 1
 #Hér bý ég til lista með hrútapsilunum sem ég appenda í, frá texta möppunum.
 hrutalisti = []
 #Hér er listi sem inniheldur spil bæði frá,
-
 tolva = []
 notandi = []
+
+
+
 #Áður en ég byrja á að gera þetta bý ég til texta möppu sem inniheldur
 #hrútaspilin. Með þessari skipun fyrir neðan opna ég skjalið
 #svo þarf ég að ákveða hvað það á að gera við það.
@@ -65,6 +78,9 @@ while len(tolva) or len(notandi) > 0:
         time.sleep(0.5)
         print("7.Malarstig",list(ordabok1[0].values())[0][7])
         time.sleep(0.5)
+        for x in range(24):
+            for i in hrutalisti[x]:
+                buatil_hrut = hrutur(i,hrutalisti[x][i][0],hrutalisti[x][i][1],hrutalisti[x][i][2],hrutalisti[x][i][3],hrutalisti[x][i][4],hrutalisti[x][i][5],hrutalisti[x][i][6],hrutalisti[x][i][7])
         val = int(input("Sláðu inn hvað þú vilt láta hrútinn þinn keppa í: "))
         #Hér fyrir neðan er kóði sem sýnir hvað valinn eiginleiki er hár miðað við eiginleika spil hins sem hann er að keppa við!
         if val == 0:
