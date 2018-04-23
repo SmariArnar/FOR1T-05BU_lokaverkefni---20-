@@ -52,9 +52,9 @@ for x in range(len(hrutalisti)):
 shuffle(heildarstokkur)
 #Hér er gefið báðum keppendum spil
 for i in heildarstokkur:
-    if len(tolva) > 26:
+    if len(tolva) < 26:
         tolva.append(i)
-    elif len(notandi) > 26:
+    elif len(notandi) < 26:
         notandi.append(i)
 '''
     #Hér bý ég til while lykkju sem mun keyra þangað til að annaðhvort hefur
@@ -225,11 +225,11 @@ while len(tolva) or len(notandi) > 0:
     #Ef val er það sama og staðsetning gildis í lista, þá ákveður þessi kóði hver vann umferðina!
     if val != 0 and val <= 8:
         time.sleep(2)
-        ordabok2 = tolva[0]
-        ordabok1 = notandi[0]
+        player2 = tolva[0]
+        player1= notandi[0]
         print("")
         #Ef eiginleikin sem þú valdir er stærri en eiginleikinn hjá spili tölvunnar vinnur þú og tekur spil tölvunnar!
-        if list(ordabok1[0].values())[0][val] > list(ordabok2[0].values())[0][val]:
+        if list(player1)[val] > list(ordabok2[0].values())[0][val]:
             print('\x1b[1;31m' + 'Þú vinnur þessa umferð!' + '\x1b[0m')
             print("  _     __       _                   _ ")
             time.sleep(0.05)
