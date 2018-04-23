@@ -21,53 +21,64 @@ teljari = 1
 hrutalisti = []
 #Hér verða allir hrútar áður enn þeir verða settir í hendurnar á þeim sem eru að spila
 heildarstokkur = []
-#Hér er listi sem inniheldur spil bæði frá,
 tolva = []
 notandi = []
-for x in range(24):
-    for i in hrutalisti[x]:
-        buatil_hrut = hrutur(i,hrutalisti[x][i][0],hrutalisti[x][i][1],hrutalisti[x][i][2],hrutalisti[x][i][3],hrutalisti[x][i][4],hrutalisti[x][i][5],hrutalisti[x][i][6],hrutalisti[x][i][7])
-        heildarstokkur.append(buatil_hrut)
-for i in heildarstokkur:
-    if tolva > 12 and notandi > 12:
-
-
-
-#Áður en ég byrja á að gera þetta bý ég til texta möppu sem inniheldur
-#hrútaspilin. Með þessari skipun fyrir neðan opna ég skjalið
-#svo þarf ég að ákveða hvað það á að gera við það.
+'''
+    #Áður en ég byrja á að gera þetta bý ég til texta möppu sem inniheldur
+    #hrútaspilin. Með þessari skipun fyrir neðan opna ég skjalið
+    #svo þarf ég að ákveða hvað það á að gera við það.
+'''
 with open("hrutaspil.txt","r", encoding="utf-8") as f:
     for line in f:
-        #Hér set ég listann úr texta skjalinu í lista ti að nota
-        #hann í framtíðinni og nota hann til að spila leikinn.
+        '''
+            #Hér set ég listann úr texta skjalinu í lista ti að nota
+            #hann í framtíðinni og nota hann til að spila leikinn.
+        '''
         hrutalisti.append(eval(line))
-#Spilin eru í fyrirframákveðinniröð því þurfum við að
-#stokka upp í honum við getum gert þetta á einfaldan hátt,
-#með shuffle skipuninni sem ruglar stokkinn.
-shuffle(hrutalisti)
-#Hér skipti ég listanum í tvo lista, eða tvær hendur
-#til að nota þær og þær eru ruglaðar
-#Ég nota engan smið fyrir valuein á dictinu þetta er einfaldara í notkun en heill klasi.
-tolva.append(hrutalisti[:26])
-notandi.append(hrutalisti[26:])
-#Hér bý ég til while lykkju sem mun keyra þangað til að annaðhvort hefur
-#tapað öllum spilunum sínum, endurtekur alltaf leikröðina þangað til leikurinn klárast.
+'''
+    #Hér er tekið hlutina úr Hrúta skjalinu og búið til hrúta með smiðinum
+    #Það er líka sett í lista sem helur öllum spilunum
+'''
+for x in range(len(hrutalisti)):
+    for i in hrutalisti[x]:
+        buatil_hrut = hrutur(i, hrutalisti[x][i][0], hrutalisti[x][i][1], hrutalisti[x][i][2], hrutalisti[x][i][3],hrutalisti[x][i][4], hrutalisti[x][i][5], hrutalisti[x][i][6], hrutalisti[x][i][7])
+        heildarstokkur.append(buatil_hrut)
+'''
+    # Hér er listi sem inniheldur spil bæði frá,
+    # Spilin eru í fyrirframákveðinniröð því þurfum við að
+    # stokka upp í honum við getum gert þetta á einfaldan hátt,
+    # með shuffle skipuninni sem ruglar stokkinn.
+'''
+shuffle(heildarstokkur)
+#Hér er gefið báðum keppendum spil
+for i in heildarstokkur:
+    if len(tolva) > 26:
+        tolva.append(i)
+    elif len(notandi) > 26:
+        notandi.append(i)
+'''
+    #Hér bý ég til while lykkju sem mun keyra þangað til að annaðhvort hefur
+    #tapað öllum spilunum sínum, endurtekur alltaf leikröðina þangað til leikurinn klárast.
+'''
 while len(tolva) or len(notandi) > 0:
-    #hér nota ég teljara sem fer sitt á hvað að velja flokk á notanda í tölvu,
-    #það sem kemur út úr þessum tveimur if setningum heitir bæði val,
-    #því flokkurinn sem er valinn fara bæði í sama proccess er þau eru valinn
-    #það er að ákvarða hvaða hrútur vinnur, svo heldur þetta áfram og áfram í while lykkjunni þar til annar er búinn að tapaþ
+    '''
+        #hér nota ég teljara sem fer sitt á hvað að velja flokk á notanda í tölvu,
+        #það sem kemur út úr þessum tveimur if setningum heitir bæði val,
+        #því flokkurinn sem er valinn fara bæði í sama proccess er þau eru valinn
+        #það er að ákvarða hvaða hrútur vinnur, svo heldur þetta áfram og áfram í while lykkjunni þar til annar er búinn að tapaþ
+    '''
     teljari += 1
     if teljari%2 == 0:
-        #Ég set hér í tvo orðabókarlista, gildin sem komu úr txt skránni
-        #Þetta er gert svo hægt sé að nota þær í hverju loopi, þ.e.a.s þær eru ekki faststaðlaðar
+        '''
+            #Ég set hér tvær breytur með fyrsta hrút i hverri hendi, gildin sem komu úr txt skránni
+            #Til að kalla á gildi fyrir það er notað t.d. ordabok1.nafn fyrir nafn og ordabok1.thyngd fyrir þyngd
+        '''
         ordabok1 = notandi[0]
         ordabok2 = tolva[0]
         print('\x1b[1;31m' + 'Nú átt þú leik!' + '\x1b[0m')
         print('\x1b[1;31m' + 'Veldu í hverju þú vilt keppa' + '\x1b[0m')
-        for key, value in ordabok1[0].items():
-            print("Þú ert með hrútinn",key)
-            print("Eiginleikar hans eru: ",value)
+        print("Þú ert með hrútinn",ordabok1.nafn)
+        print("Eiginleikar hans eru: ",ordabok1.thyngd,',',ordabok1.mjolk,',',ordabok1)
         time.sleep(0.5)
         #Valmynd um hvaða eiginleika notandinn vill nota, í umferðinni!
         print("0.Þyngdarstig ",list(ordabok1[0].values())[0][0])
