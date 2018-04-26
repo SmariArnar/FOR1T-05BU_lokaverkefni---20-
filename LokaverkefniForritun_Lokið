@@ -23,6 +23,7 @@ hrutalisti = []
 heildarstokkur = []
 tolva = []
 notandi = []
+jafntefli = []
 '''
     #Áður en ég byrja á að gera þetta bý ég til texta möppu sem inniheldur
     #hrútaspilin. Með þessari skipun fyrir neðan opna ég skjalið
@@ -241,6 +242,10 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             notandi.append(notandi.pop(0))
             notandi.append(tolva.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         #Ef tölvan valdi eiginleika hrútsins sem er stærri en eiginleikinn sem notandi er með tekur tölvan spilið!
         elif player1.thyngd < player2.thyngd:
             player1 = notandi[0]
@@ -256,9 +261,15 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             tolva.append(tolva.pop(0))
             tolva.append(notandi.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         #Ef það kemur upp jafntefli er bara valinn einhver annara eiginleiki á hrútnm.
         elif player1.thyngd == player2.thyngd:
             print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+            jafntefli.append(player1)
+            jafntefli.append(player2)
         #Hér geta notendur séð hvernig staðan er á stokkunum í hverri loopu!
         print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
         time.sleep(1)
@@ -283,6 +294,10 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             notandi.append(notandi.pop(0))
             notandi.append(tolva.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    notandi.append(jafntefli[i])
+                jafntefli.pop()
         elif player1.mjolk < player2.mjolk:
             player1 = notandi[0]
             player2 = tolva[0]
@@ -297,8 +312,14 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             tolva.append(tolva.pop(0))
             tolva.append(notandi.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         elif player1.mjolk == player2.mjolk:
             print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+            jafntefli.append(player1)
+            jafntefli.append(player2)
         print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
         time.sleep(1)
         print("Eftir þessa umferð ert þú með:", len(notandi), "spil.")
@@ -323,6 +344,10 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             notandi.append(notandi.pop(0))
             notandi.append(tolva.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    notandi.append(jafntefli[i])
+                jafntefli.pop()
         #Ef tölvan valdi eiginleika hrútsins sem er stærri en eiginleikinn sem notandi er með tekur tölvan spilið!
         elif player1.ull < player2.ull:
             player1 = notandi[0]
@@ -338,9 +363,15 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             tolva.append(tolva.pop(0))
             tolva.append(notandi.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         #Ef það kemur upp jafntefli er bara valinn einhver annara eiginleiki á hrútnm.
         elif player1.ull == player2.ull:
             print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+            jafntefli.append(player1)
+            jafntefli.append(player2)
         #Hér geta notendur séð hvernig staðan er á stokkunum í hverri loopu!
         print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
         time.sleep(1)
@@ -366,6 +397,10 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             notandi.append(notandi.pop(0))
             notandi.append(tolva.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)-1):
+                    notandi.append(jafntefli[i])
+                jafntefli.pop()
         #Ef tölvan valdi eiginleika hrútsins sem er stærri en eiginleikinn sem notandi er með tekur tölvan spilið!
         elif player1.afkvaemi < player2.afkvaemi:
             player1 = notandi[0]
@@ -381,9 +416,15 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             tolva.append(tolva.pop(0))
             tolva.append(notandi.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         #Ef það kemur upp jafntefli er bara valinn einhver annara eiginleiki á hrútnm.
         elif player1.afkvaemi == player2.afkvaemi:
             print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+            jafntefli.append(player1)
+            jafntefli.append(player2)
         #Hér geta notendur séð hvernig staðan er á stokkunum í hverri loopu!
         print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
         time.sleep(1)
@@ -409,6 +450,10 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             notandi.append(notandi.pop(0))
             notandi.append(tolva.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    notandi.append(jafntefli[i])
+                jafntefli.pop()
         #Ef tölvan valdi eiginleika hrútsins sem er stærri en eiginleikinn sem notandi er með tekur tölvan spilið!
         elif player1.laeri < player2.laeri:
             player1 = notandi[0]
@@ -424,9 +469,15 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             tolva.append(tolva.pop(0))
             tolva.append(notandi.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         #Ef það kemur upp jafntefli er bara valinn einhver annara eiginleiki á hrútnm.
         elif player1.laeri == player2.laeri:
             print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+            jafntefli.append(player1)
+            jafntefli.append(player2)
         #Hér geta notendur séð hvernig staðan er á stokkunum í hverri loopu!
         print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
         time.sleep(1)
@@ -452,6 +503,10 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             notandi.append(notandi.pop(0))
             notandi.append(tolva.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    notandi.append(jafntefli[i])
+                jafntefli.pop()
         #Ef tölvan valdi eiginleika hrútsins sem er stærri en eiginleikinn sem notandi er með tekur tölvan spilið!
         elif player1.frjosemi < player2.frjosemi:
             player1 = notandi[0]
@@ -467,9 +522,15 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             tolva.append(tolva.pop(0))
             tolva.append(notandi.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         #Ef það kemur upp jafntefli er bara valinn einhver annara eiginleiki á hrútnm.
         elif player1.frjosemi == player2.frjosemi:
             print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+            jafntefli.append(player1)
+            jafntefli.append(player2)
         #Hér geta notendur séð hvernig staðan er á stokkunum í hverri loopu!
         print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
         time.sleep(1)
@@ -495,6 +556,10 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             notandi.append(notandi.pop(0))
             notandi.append(tolva.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    notandi.append(jafntefli[i])
+                jafntefli.pop()
         #Ef tölvan valdi eiginleika hrútsins sem er stærri en eiginleikinn sem notandi er með tekur tölvan spilið!
         elif player1.bak < player2.bak:
             player1 = notandi[0]
@@ -510,9 +575,15 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             tolva.append(tolva.pop(0))
             tolva.append(notandi.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         #Ef það kemur upp jafntefli er bara valinn einhver annara eiginleiki á hrútnm.
         elif player1.bak == player2.bak:
             print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+            jafntefli.append(player1)
+            jafntefli.append(player2)
         #Hér geta notendur séð hvernig staðan er á stokkunum í hverri loopu!
         print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
         time.sleep(1)
@@ -538,6 +609,10 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             notandi.append(notandi.pop(0))
             notandi.append(tolva.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    notandi.append(jafntefli[i])
+                jafntefli.pop()
         #Ef tölvan valdi eiginleika hrútsins sem er stærri en eiginleikinn sem notandi er með tekur tölvan spilið!
         elif player1.malars < player2.malars:
             player1 = notandi[0]
@@ -553,9 +628,15 @@ while len(tolva) or len(notandi) > 0:
             time.sleep(2)
             tolva.append(tolva.pop(0))
             tolva.append(notandi.pop(0))
+            if len(jafntefli) > 0:
+                for i in range(len(jafntefli)):
+                    tolva.append(jafntefli[i])
+                jafntefli.pop()
         #Ef það kemur upp jafntefli er bara valinn einhver annara eiginleiki á hrútnm.
         elif player1.malars == player2.malars:
             print('\x1b[1;31m' + 'JAFNTEFLI!!' + '\x1b[0m')
+            jafntefli.append(player1)
+            jafntefli.append(player2)
         #Hér geta notendur séð hvernig staðan er á stokkunum í hverri loopu!
         print('\x1b[1;31m' + 'Stokkarnir eftir þessa umferð!' + '\x1b[0m')
         time.sleep(1)
